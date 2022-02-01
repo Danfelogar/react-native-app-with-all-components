@@ -6,7 +6,7 @@ export const useAnimation = () => {
     const opacity = useRef( new Animated.Value(0.4)).current;
     const position = useRef( new Animated.Value(0)).current;
 
-    const fadeIn = () => {
+    const fadeIn = ( duration: number = 300 ) => {
         //esta en especifico nos permite tirar una animacion con tiempo
         Animated.timing(
             //hacemos referencia a la opacidad creada
@@ -14,11 +14,12 @@ export const useAnimation = () => {
             //definimos el tipo de animacion
             {
                 toValue: 1,
-                duration: 300,
+                duration,
                 //acelerar animacion por hardware
                 useNativeDriver: true,
             }
-        ).start( () => console.log('animacion termino'));
+        ).start();
+        // ).start( () => console.log('animacion termino'));
     }
 
     const fadeOut = () => {

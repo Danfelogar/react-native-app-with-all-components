@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ActivityIndicator, Animated, ImageStyle, StyleProp, View } from 'react-native';
+import { ThemeContext } from '../context/ThemeContext';
 import { useAnimation } from '../hooks/useAnimation';
 
 interface Props {
@@ -8,6 +9,9 @@ interface Props {
 }
 
 export const FadeInImage = ( { uri, style }: Props ) => {
+
+    const { theme:{ colors, dividerColor, dark } } = useContext( ThemeContext );
+
 
     const { opacity, fadeIn } = useAnimation();
     const [isLoading, setIsLoading] = useState( true );
@@ -20,7 +24,7 @@ export const FadeInImage = ( { uri, style }: Props ) => {
     return(
         <View style={{ justifyContent: 'center', alignItems: 'center', }}>
             {/* como es absolute resulta y pasa que si no se cambia va a superponerse un elemento al otro */}
-            { isLoading && <ActivityIndicator style={{ position: 'absolute' }} color='orange' size={ 30 }/> }
+            { isLoading && <ActivityIndicator color={ colors.primary } style={{ position: 'absolute' }} size={ 30 }/> }
 
             <Animated.Image
             source={{ uri }}

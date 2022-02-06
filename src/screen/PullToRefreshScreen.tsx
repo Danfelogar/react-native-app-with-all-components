@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ScrollView, View, RefreshControl, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { HeaderTitle } from '../components/HeaderTitle';
+import { ThemeContext } from '../context/ThemeContext';
 import { styles } from '../theme/appTheme';
 
 export const PullToRefreshScreen = () => {
+
+    const { theme:{ colors, dividerColor ,dark } } = useContext( ThemeContext );
 
     const { top } = useSafeAreaInsets();
 
@@ -32,11 +35,11 @@ export const PullToRefreshScreen = () => {
                     onRefresh={ onRefresh }
                     // que tan abajo quiero el refresh
                     progressViewOffset={ 10 }
-                    progressBackgroundColor='#5856D6'
+                    progressBackgroundColor={ dividerColor }
                     colors={['white','red','orange']}
                     // esto es para ios
-                    style={{ backgroundColor: '#5856D6' }}
-                    tintColor='white'
+                    // style={{ backgroundColor: '#5856D6' }}
+                    tintColor={ dark ? 'white' : 'black' }
                     title='refreshing'
                     titleColor='white'
                 />

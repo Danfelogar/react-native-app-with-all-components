@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Modal, Text, View } from 'react-native';
 import { HeaderTitle } from '../components/HeaderTitle';
+import { ThemeContext } from '../context/ThemeContext';
 import { styles } from '../theme/appTheme';
 
 export const ModalScreen = () => {
 
     const [isVisible, setIsVisible] = useState(false);
+
+    const { theme:{ colors } } = useContext( ThemeContext );
 
     return(
         <View style={ styles.gobalMargin }>
@@ -32,7 +35,7 @@ export const ModalScreen = () => {
                 }}>
                     {/* contenido del modal */}
                     <View style={{
-                        backgroundColor: 'white',
+                        backgroundColor: colors.primary,
                         height: 300,
                         width: 300,
                         justifyContent: 'center',

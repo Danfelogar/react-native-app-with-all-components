@@ -1,7 +1,8 @@
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation, useTheme } from '@react-navigation/native';
+import React, { useContext } from 'react';
+import { StyleSheet, Text, TouchableOpacity, useColorScheme, View } from 'react-native';
 import  Icon  from 'react-native-vector-icons/Ionicons';
+import { ThemeContext } from '../context/ThemeContext';
 import { MenuItem } from '../interfaces/appInterfaces';
 
 interface Props {
@@ -11,6 +12,8 @@ interface Props {
 export const FlatListMenuItem = ({ menuItem }: Props) => {
 
     const navigation = useNavigation();
+    // const { colors } = useTheme();
+    const { theme:{ colors } } = useContext( ThemeContext );
 
     return (
         // control para navegara  en todas las vistas
@@ -18,15 +21,15 @@ export const FlatListMenuItem = ({ menuItem }: Props) => {
             <View style={ styles.container }>
                 <Icon
                     name={ menuItem.icon }
-                    color='orange'
+                    color={ colors.primary }
                     size={23}
                 />
-                <Text style={ styles.itemText }>{ menuItem.name }</Text>
+                <Text style={{ ...styles.itemText, color: colors.text }}>{ menuItem.name }</Text>
 
                 <View style={ styles.iconEnd }/>
                     <Icon
                         name='chevron-forward-outline'
-                        color='orange'
+                        color={ colors.primary }
                         size={23}
                     />
             </View>

@@ -15,28 +15,28 @@ export  interface ThemeState extends Theme {
 export const lightTheme: ThemeState = {
     currentTheme: 'light',
     dark: false,
-    dividerColor: 'rgba(0,0,0,0.6)',
+    dividerColor: 'rgba(0, 0, 0, 0.12)',
     colors: {
         primary: '#084F6A',
-        background: 'white',
-        card: 'green',
-        text: 'black',
-        border: 'orange',
-        notification: 'teal',
+        background: '#fff',
+        card: 'rgba(0, 0, 0, 0.54)',
+        text: 'rgba(0, 0, 0, 0.87)',
+        border: 'rgba(0, 0, 0, 0.04)',
+        notification: 'rgba(0, 0, 0, 0.38)',
     }
 }
 
 export const darkTheme: ThemeState = {
     currentTheme: 'dark',
     dark: true,
-    dividerColor: 'rgba(255,255,255,0.6)',
+    dividerColor: 'rgba(255, 255, 255, 0.12)',
     colors: {
         primary: '#75CEDB',
-        background: 'black',
-        card: 'black',
-        text: 'white',
-        border: 'black',
-        notification: 'teal',
+        background: '#121212',
+        card: '#fff',
+        text: '#fff',
+        border: 'rgba(255, 255, 255, 0.08)',
+        notification: 'rgba(0, 0, 0, 0.38)',
     }
 }
 
